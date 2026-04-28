@@ -1,0 +1,7 @@
+FROM python:3.13-slim
+WORKDIR /app
+COPY monitor.py .
+# 安装依赖
+RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests docker
+# 运行脚本
+CMD ["python", "monitor.py"]

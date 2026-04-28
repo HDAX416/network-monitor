@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  java-app:
+    build: .
+    container_name: java-service
+    networks:
+      - net-monitor-zone
+
+  monitor-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.monitor
+    container_name: my-monitor
+    depends_on:
+      - java-app
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - net-monitor-zone
+
+networks:
+  net-monitor-zone:
+    driver: bridge
