@@ -48,6 +48,3 @@ python monitor.py
 - [ ] 迁移至 Kubernetes 部署
 - [ ] 集成真实网络设备（通过 SNMP 或 Netmiko）
 - [ ] 添加邮件/钉钉告警通知
-
-## 作者
-XXX - 网络工程大二在读
