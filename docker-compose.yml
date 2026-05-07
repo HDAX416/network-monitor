@@ -1,24 +1,47 @@
-version: '3.9'
+
 
 services:
+  db:
+    image: mysql:8.0
+    container_name: monitor-db
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: net_monitor
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - monitor-net
+    healthcheck:                               # 👈 新增
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
   java-app:
     build: .
     container_name: java-service
-    networks:
-      - net-monitor-zone
-
-  monitor-app:
-    build:
-      context: .
-      dockerfile: Dockerfile.monitor
-    container_name: my-monitor
+    ports:
+      - "8080:8080"
     depends_on:
-      - java-app
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      db:
+        condition: service_healthy            # 👈 改这里：从 depends_on: - db 改成这个
     networks:
-      - net-monitor-zone
+      - monitor-net
 
+  grafana:
+    image: grafana/grafana:latest
+    container_name: monitor-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin  # 登录密码设为 admin
+    networks:
+      - monitor-net
 networks:
-  net-monitor-zone:
+  monitor-net:
     driver: bridge
+
+volumes:
+  mysql_data:
+

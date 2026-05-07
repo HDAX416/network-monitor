@@ -1,8 +1,11 @@
-# 基础镜像：使用轻量级的 Java 21
-FROM eclipse-temurin:21-jdk-alpine
+FROM maven:3.9-eclipse-temurin-17 AS build
+WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# 将 target 下的 jar 包复制到容器里并改名为 app.jar
-COPY target/*.jar app.jar
-
-# 运行命令
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+FROM eclipse-temurin:17-jre
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]

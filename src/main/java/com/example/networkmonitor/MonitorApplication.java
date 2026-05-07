@@ -4,10 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class NetworkMonitorApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(NetworkMonitorApplication.class, args);
-	}
-
+public class MonitorApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MonitorApplication.class, args);
+    }
 }
