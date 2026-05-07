@@ -9,10 +9,12 @@
 实现了一个包含4个微服务、5个技术组件的完整监控闭环，支持一键部署与实时可视化
 
 ## 系统架构
+```mermaid
 graph LR
     A[Python 监控脚本] --"每5s HTTP轮询"--> B[Java Spring Boot 接口];
     B --"读写数据"--> C[MySQL 数据库];
     C --"提供数据源"--> D[Grafana 可视化看板];
+```
 
 ## 技术栈
 - 后端：Java 17, Spring Boot 3.2.5, Spring Data JPA
