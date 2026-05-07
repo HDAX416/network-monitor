@@ -1,8 +1,3 @@
-啊啊啊啊啊啊啊啊啊我真的是受不了了,原本想整理一下自docker学习以来的笔记，包括糖宝和gemini大人的，以防对话达到长度限制。
-还有回顾一下遇到过的错误，学过的命令，之前在vim里写过笔记，但不知道是不是我没保存，全部不见了，后面又重新写，还是不见了。
-我tm服了，所以现在来写这个markdown，我在OneNote里也记过，不过总觉得还是提交到仓库里更有意义，所以现在来写这个markdown
-希望今天能搞完吧。
-监控自愈系统中如果有内容需要更改，需要更新maven依赖，并且重新构建镜像
 # 云原生网络监控自愈平台
 
 ## 项目简介
@@ -22,7 +17,7 @@ Python 监控脚本 ──每5秒轮询──> Java Spring Boot 接口 ──读
 
 ## 快速开始
 ### 1. 克隆仓库
-git clone https://github.com/你的用户名/network-monitor.git
+git clone https://github.com/HDAX416/network-monitor.git
 cd network-monitor
 
 ### 2. 一键启动所有服务
