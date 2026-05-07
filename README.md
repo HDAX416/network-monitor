@@ -18,7 +18,6 @@ Python 监控脚本 ──每5秒轮询──> Java Spring Boot 接口 ──读
 ## 快速开始
 ### 1. 克隆仓库
 git clone https://github.com/HDAX416/network-monitor.git
-cd network-monitor
 
 ### 2. 一键启动所有服务
 docker-compose up -d
