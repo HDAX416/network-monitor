@@ -5,8 +5,14 @@
 使用 Python 脚本实现定时轮询监控，并将数据持久化至 MySQL，最终通过 Grafana 实现可视化展示。
 全部服务通过 Docker Compose 容器化编排，实现一键部署。
 
+##成果总结
+实现了一个包含4个微服务、5个技术组件的完整监控闭环，支持一键部署与实时可视化
+
 ## 系统架构
-Python 监控脚本 ──每5秒轮询──> Java Spring Boot 接口 ──读写──> MySQL ──数据源──> Grafana 看板
+graph LR
+    A[Python 监控脚本] --"每5s HTTP轮询"--> B[Java Spring Boot 接口];
+    B --"读写数据"--> C[MySQL 数据库];
+    C --"提供数据源"--> D[Grafana 可视化看板];
 
 ## 技术栈
 - 后端：Java 17, Spring Boot 3.2.5, Spring Data JPA
