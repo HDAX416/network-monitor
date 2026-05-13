@@ -13,7 +13,7 @@ jobs:
       - name: Login to Aliyun Registry
         uses: docker/login-action@v2
         with:
-          registry: registry.cn-hangzhou.aliyuncs.com
+          registry: crpi-sn0v6hu1pbwvl2y5.cn-hangzhou.personal.cr.aliyuncs.com
           username: ${{ secrets.ALIYUN_USERNAME }}
           password: ${{ secrets.ALIYUN_PASSWORD }}
 
@@ -21,4 +21,4 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: registry.cn-hangzhou.aliyuncs.com/hong256/repositories1:latest
+          tags: crpi-sn0v6hu1pbwvl2y5.cn-hangzhou.personal.cr.aliyuncs.com/hong256/repositories1:latest
