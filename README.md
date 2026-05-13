@@ -53,6 +53,12 @@ kubectl port-forward svc/java-service 8080:8080
 - 预留自愈接口，可扩展为自动化故障恢复系统
 - 实现容器化服务的集群部署
 
+## CI/CD
+本项目已接入 GitHub Actions 自动化流水线：
+- 推送代码到 main 分支自动触发构建
+- 自动构建 Docker 镜像并推送至阿里云容器镜像服务
+- 镜像地址：registry.cn-hangzhou.aliyuncs.com/hong256/repositories1:latest
+
 ## 后续计划
 - [ ] 集成真实网络设备（通过 SNMP 或 Netmiko）
 - [ ] 添加邮件/钉钉告警通知
