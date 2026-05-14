@@ -8,17 +8,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Login to Aliyun Registry
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           registry: crpi-sn0v6hu1pbwvl2y5.cn-hangzhou.personal.cr.aliyuncs.com
           username: ${{ secrets.ALIYUN_USERNAME }}
           password: ${{ secrets.ALIYUN_PASSWORD }}
 
       - name: Build and Push
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
+          context: .
           push: true
-          tags: crpi-sn0v6hu1pbwvl2y5.cn-hangzhou.personal.cr.aliyuncs.com/hong256/repositories1:latest
+          tags: |
+              crpi-sn0v6hu1pbwvl2y5.cn-hangzhou.personal.cr.aliyuncs.com/hong256/repositories1:latest
+              crpi-sn0v6hu1pbwvl2y5.cn-hangzhou.personal.cr.aliyuncs.com/hong256/repositories1:${{ github.sha }}
