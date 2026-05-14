@@ -23,7 +23,9 @@ graph LR
 - 数据库：MySQL 8.0
 - 监控：Python 3, requests
 - 可视化：Grafana
-- 容器化：Docker, Docker Compose,Kubernetes
+- 容器化：Docker, Docker Compose
+- 编排：Kubernetes
+- CI/CD:GitHub Actions + 阿里云容器镜像服务
 
 ## 快速开始
 ### 1. 克隆仓库
@@ -47,6 +49,12 @@ kubectl apply -f mysql-k8s.yaml
 kubectl apply -f java-k8s.yaml
 kubectl port-forward svc/java-service 8080:8080
 
+### 7. CI/CD
+本项目已接入 GitHub Actions 自动化流水线：
+- 推送代码到 main 分支自动触发构建
+- 自动构建 Docker 镜像并推送至阿里云容器镜像服务
+- 镜像地址：crpi-sn0v6hu1pbwvl2y5.cn-hangzhou.personal.cr.aliyuncs.com/hong256/repositories1:latest
+
 ## 项目亮点
 - 模拟 OSPF/BGP 路由协议状态变化，贴近真实网络运维场景
 - 全链路容器化部署，一条命令即可拉起所有服务
@@ -54,11 +62,7 @@ kubectl port-forward svc/java-service 8080:8080
 - 预留自愈接口，可扩展为自动化故障恢复系统
 - 实现容器化服务的集群部署
 
-## CI/CD
-本项目已接入 GitHub Actions 自动化流水线：
-- 推送代码到 main 分支自动触发构建
-- 自动构建 Docker 镜像并推送至阿里云容器镜像服务
-- 镜像地址：registry.cn-hangzhou.aliyuncs.com/hong256/repositories1:latest
+
 
 ## 后续计划
 - [ ] 集成真实网络设备（通过 SNMP 或 Netmiko）
