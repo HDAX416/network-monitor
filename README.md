@@ -1,10 +1,11 @@
-# 云原生网络监控自愈平台
+# 云原生网络监控自愈平台 ![Build Status](https://github.com/HDAX416/network-monitor/actions/workflows/build.yml/badge.svg)
 
 ## 项目简介
 本项目是一个面向网络运维场景的轻量级监控系统。通过 Spring Boot 模拟网络设备（OSPF/BGP）状态，
 使用 Python 脚本实现定时轮询监控，并将数据持久化至 MySQL，最终通过 Grafana 实现可视化展示。
 全部服务通过 Docker Compose 容器化编排，实现一键部署。
 将项目迁移至 Kubernetes，编写 Deployment 与 Service YAML 实现容器化服务的集群部署。
+
 
 ##成果总结
 实现了一个包含4个微服务、5个技术组件的完整监控闭环，支持一键部署与实时可视化
